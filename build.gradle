@@ -1,0 +1,78 @@
+plugins {
+    id 'scala'
+    id 'idea'
+    id 'java'
+    id 'eclipse'
+
+    id 'com.github.ben-manes.versions' version "0.15.0"
+    id "com.github.maiflai.scalatest" version "0.23"
+    
+}
+
+group = theGroup
+version = theVersion
+sourceCompatibility = theSourceCompatibility
+
+repositories {
+    mavenLocal()
+    flatDir {
+        dirs 'lib'
+    }
+    mavenCentral()
+}
+
+def scalaVersion = '2.12'
+
+// Note: Make sure any scala library included uses scalaVersion 2.11, 2.12 libraries are not compatible
+
+dependencies {
+    compile group: 'org.scala-lang', name: 'scala-library', version: "${scalaVersion}.4"
+    compile group: 'com.mashape.unirest', name: 'unirest-java', version: '1.4.9'
+    //compile group: 'com.datastax.gatling.stress', name:  'gatling-dse-stress', version: '1.2.4'
+
+    // Note: Gatling DSE project is ONLY compatible with Gatling v2.3.0+ as of 2017-10-05
+    compile(group: 'io.gatling.highcharts', name: 'gatling-charts-highcharts', version: '2.3.0') {
+        exclude(module: 'gatling-jdbc')
+        exclude(module: 'gatling-jms')
+        exclude(module: 'gatling-redis')
+        exclude(module: 'redisclient')
+        exclude(module: 'gatling-recorder')
+    }
+    compile fileTree(dir: 'lib', includes: ['*.jar'])
+
+    testCompile group: 'org.scalatest', name: "scalatest_${scalaVersion}", version: '3.0.1'
+    testRuntime group: 'org.pegdown', name: 'pegdown', version: '1.6.0'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2'
+}
+
+
+jar {
+
+    baseName = theName
+    version = theVersion
+
+    from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+
+    manifest {
+        attributes 'Implementation-Title': theName,
+                'Implementation-Version': theVersion,
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version'),
+                'Main-Class': 'com.datastax.gatling.stress.Starter'
+    }
+
+}
+
+task buildLauncher(type: Exec) {
+    commandLine './src/make/launch-builder.sh'
+}
+
+build.finalizedBy(buildLauncher)
