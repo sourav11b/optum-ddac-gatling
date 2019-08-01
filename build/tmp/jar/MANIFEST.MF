@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: gatling-ddac-sims-optum
+Implementation-Version: 1.0
+Built-By: sourav11b
+Built-Date: Thu Aug 01 19:10:18 GMT 2019
+Built-JDK: 1.8.0_191
+Main-Class: com.datastax.gatling.stress.Starter
+

@@ -1,0 +1,12 @@
+products:
+   src/test/scala/sims/OrdersSimulationsSpec.scala -> build/classes/scala/test/sims/OrdersSimulationsSpec.class
+binary dependencies:
+   src/test/scala/sims/OrdersSimulationsSpec.scala -> /home/sourav11b/.gradle/caches/modules-2/files-2.1/io.gatling/gatling-app/2.3.0/41e96ca0911d7272ffcceaad133cb1e2918683bc/gatling-app-2.3.0.jar
+   src/test/scala/sims/OrdersSimulationsSpec.scala -> /home/sourav11b/.gradle/caches/modules-2/files-2.1/io.gatling/gatling-core/2.3.0/dd80c883fc7c4f4e6d961ac0eb3668ce045d06ef/gatling-core-2.3.0.jar
+   src/test/scala/sims/OrdersSimulationsSpec.scala -> /home/sourav11b/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.12.4/7663f74ef944453c86cc7e6597ed33e9281f6412/scala-library-2.12.4.jar
+   src/test/scala/sims/OrdersSimulationsSpec.scala -> /home/sourav11b/.gradle/caches/modules-2/files-2.1/org.scalactic/scalactic_2.12/3.0.1/1d893666e3561505729e33a3ee124e22fbfed774/scalactic_2.12-3.0.1.jar
+   src/test/scala/sims/OrdersSimulationsSpec.scala -> /home/sourav11b/.gradle/caches/modules-2/files-2.1/org.scalatest/scalatest_2.12/3.0.1/3a9dcb5a4308c4fd0f7424b5676f6fbf21c85131/scalatest_2.12-3.0.1.jar
+source dependencies:
+external dependencies:
+class names:
+   src/test/scala/sims/OrdersSimulationsSpec.scala -> sims.OrdersSimulationsSpec
